@@ -850,7 +850,9 @@
                 } else {
                     NSLog(@"Error creating audio session, microphone permission denied.");
                     weakSelf.errorCode = CAPTURE_INTERNAL_ERR;
-                    [weakSelf dismissAudioView:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf dismissAudioView:nil];
+                    });
                 }
             }];
 #pragma clang diagnostic pop
