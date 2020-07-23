@@ -849,7 +849,6 @@
                     startRecording();
                 } else {
                     NSLog(@"Error creating audio session, microphone permission denied.");
-                    weakSelf.errorCode = CAPTURE_INTERNAL_ERR;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf showMicrophonePermissionAlert];
                     });
