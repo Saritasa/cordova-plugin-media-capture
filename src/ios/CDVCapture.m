@@ -845,14 +845,15 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self.avSession performSelector:rrpSel withObject:^(BOOL granted){
-                if (granted) {
-                    startRecording();
-                } else {
-                    NSLog(@"Error creating audio session, microphone permission denied.");
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (granted) {
+                        startRecording();
+                    } else {
+                        NSLog(@"Error creating audio session, microphone permission denied.");
+                        weakSelf.errorCode = CAPTURE_INTERNAL_ERR;
                         [weakSelf showMicrophonePermissionAlert];
-                    });
-                }
+                    }
+                });
             }];
 #pragma clang diagnostic pop
         } else {
