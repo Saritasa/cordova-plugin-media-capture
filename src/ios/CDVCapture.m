@@ -604,7 +604,7 @@
 
 @end
 
-@interface CDVAudioRecorderViewController () {
+@interface CDVAudioRecorderViewController () <UIAdaptivePresentationControllerDelegate> {
     UIStatusBarStyle _previousStatusBarStyle;
 }
 @end
@@ -653,6 +653,8 @@
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
     NSError* error = nil;
 
+    self.navigationController.presentationController.delegate = self;
+
     if (self.avSession == nil) {
         // create audio session
         self.avSession = [AVAudioSession sharedInstance];
@@ -696,7 +698,7 @@
     }
 }
 
-- (void)setupUI {
+-(void) setupUI {
 
     CGRect viewRect = self.view.bounds;
     CGFloat topInset = self.navigationController.navigationBar.frame.size.height;
@@ -991,6 +993,10 @@
     [super viewWillAppear:animated];
 
     [self setupUI];
+}
+
+- (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
+    [self dismissAudioView:nil];
 }
 
 @end
