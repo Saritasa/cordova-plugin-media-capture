@@ -25,7 +25,14 @@ description: Capture audio, video, and images.
 |:-:|:-:|
 |[![Build status](https://ci.appveyor.com/api/projects/status/github/apache/cordova-plugin-media-capture?branch=master)](https://ci.appveyor.com/project/ApacheSoftwareFoundation/cordova-plugin-media-capture)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-media-capture.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-media-capture)|
 
-# cordova-plugin-media-capture
+# fork from apache/cordova-plugin-media-capture
+
+## Contains the following pull requests:
+ * https://github.com/apache/cordova-plugin-media-capture/pull/186 - Handle new swipeable modal (iOS 13+) on audio-capture controller.
+ * https://github.com/apache/cordova-plugin-media-capture/pull/184 - Bugfix of crash on denied permission on audio-capture.
+ * https://github.com/apache/cordova-plugin-media-capture/pull/185 - Fix layout on audio-capture modal.
+ 
+**FORK DESCRIPTION**: Plugin has a couple of bugs with audio-capture on iOS 13+, our team needed the fixes immediately (listed above), so there is a fork to use on our projects.
 
 This plugin provides access to the device's audio, image, and video capture capabilities.
 
